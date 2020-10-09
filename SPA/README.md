@@ -8,11 +8,31 @@ npx create-react-app react-oidc
 
 ## SSL
 
+Follow the directions in ./ssl/README.md
+
 Modify package.json
 
 ```
-"start": "set HTTPS=true&&set SSL_CRT_FILE=./ssl/server.crt&& set SSL_KEY_FILE=./ssl/server.key&&react-scripts start",
+"start": "set HTTPS=true&&set SSL_CRT_FILE=./ssl/server.crt&&set SSL_KEY_FILE=./ssl/server.key&&react-scripts start",
 ```
+
+## Install oidc-client
+
+[Oidc-client](https://github.com/IdentityModel/oidc-client-js)
+
+```
+npm install oidc-client --save
+```
+
+## Install Router
+
+```
+npm install react-router-dom --save
+```
+
+## Configure Environment
+
+Configure these variables IDENTITY_CONFIG and METADATA_OIDC and the environment variables inside of the .env.development and .evn.production
 
 ## Available Scripts
 

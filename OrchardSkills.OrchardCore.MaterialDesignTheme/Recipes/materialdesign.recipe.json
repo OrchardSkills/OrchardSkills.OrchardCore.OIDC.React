@@ -3151,8 +3151,8 @@
       "DisplayName": "Authorization Code Flow",
       "name": "OpenIdApplication",
       "ClientId": "code_flow_client_id",
-      "RedirectUris": "https://localhost:5002/signin-callback",
-      "PostLogoutRedirectUris": "https://localhost:5002/signout-callback",
+      "RedirectUris": "https://localhost:3000/signin-callback",
+      "PostLogoutRedirectUris": "https://localhost:3000/signout-callback",
       "AllowAuthorizationCodeFlow": true,
       "AllowLogoutEndpoint": true,
       "Type": "public"
