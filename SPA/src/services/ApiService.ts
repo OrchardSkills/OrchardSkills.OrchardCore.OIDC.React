@@ -36,6 +36,6 @@ export class ApiService {
       Authorization: 'Bearer ' + token
     };
 
-    return axios.get(Constants.apiRoot + 'test', { headers });
+    return axios.get(Constants.apiRoot + '?query={subscriber {createdUtc, displayText email firstName lastName modifiedUtc publishedUtc contentItemId }}', { headers });
   }
 }
