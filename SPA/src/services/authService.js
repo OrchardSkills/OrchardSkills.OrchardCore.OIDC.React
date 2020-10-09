@@ -1,4 +1,4 @@
-import { IDENTITY_CONFIG, METADATA_OIDC } from "../constants/authConst";
+import { IDENTITY_CONFIG/*,  METADATA_OIDC */ } from "../constants/authConst";
 import { UserManager, WebStorageStateStore, Log } from "oidc-client";
 
 export default class AuthService {
@@ -8,9 +8,9 @@ export default class AuthService {
         this.UserManager = new UserManager({
             ...IDENTITY_CONFIG,
             userStore: new WebStorageStateStore({ store: window.sessionStorage }),
-            metadata: {
-                ...METADATA_OIDC
-            }
+            // metadata: {
+            //     ...METADATA_OIDC
+            // }
         });
         // Logger
         Log.logger = console;
