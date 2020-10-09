@@ -1,0 +1,1 @@
+"%ProgramFiles%\Git\bin\bash.exe" generate.sh

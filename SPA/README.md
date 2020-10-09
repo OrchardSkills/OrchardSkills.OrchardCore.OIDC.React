@@ -6,6 +6,14 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 npx create-react-app react-oidc
 ```
 
+## SSL
+
+Modify package.json
+
+```
+"start": "set HTTPS=true&&set SSL_CRT_FILE=./ssl/server.crt&& set SSL_KEY_FILE=./ssl/server.key&&react-scripts start",
+```
+
 ## Available Scripts
 
 In the project directory, you can run:
