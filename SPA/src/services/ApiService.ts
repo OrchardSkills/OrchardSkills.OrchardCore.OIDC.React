@@ -69,4 +69,57 @@ export class ApiService {
     return axios.get(Constants.apiContent + '/' + id, { headers });
   }
 
+  public updateSubscriber(id: string, firstName: string, lastName: string, email: string): Promise<any> {
+    return this.authService.getUser().then(user => {
+      if (user && user.access_token) {
+        return this._updateSubscriber(id, firstName, lastName, email, user.access_token).catch(error => {
+          if (error.response.status === 401) {
+            return this.authService.renewToken().then(renewedUser => {
+              return this._updateSubscriber(id, firstName, lastName, email, renewedUser.access_token);
+            });
+          }
+          throw error;
+        });
+      } else if (user) {
+        return this.authService.renewToken().then(renewedUser => {
+          return this._updateSubscriber(id, firstName, lastName, email, renewedUser.access_token);
+        });
+      } else {
+        throw new Error('user is not logged in');
+      }
+    });
+  }
+
+  private _updateSubscriber(id: string, firstName: string, lastName: string, email: string, token: string) {
+    const headers = {
+      Accept: 'application/json',
+      Authorization: 'Bearer ' + token
+    };
+
+    const body = {
+      ContentItemId: id,
+      DisplayText: firstName + ' ' + lastName,
+      TitlePart: {
+        Title: firstName + ' ' + lastName
+      },
+      Subscriber: {
+        FirstName: {
+          Text: firstName
+        },
+        LastName: {
+          Text: lastName
+        },
+        Email: {
+          Text: email
+        }
+      },
+      ContainedPart: {
+        ListContentItemId: '462m1ps5kkzkp2k5da5pfhh2ww',
+        Order: 0
+      }
+    }
+
+    return axios.post(Constants.apiContent, body, { headers });
+  }
+
 }
