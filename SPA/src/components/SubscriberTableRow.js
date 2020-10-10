@@ -10,7 +10,7 @@ export default class SubscriberTableRow extends Component {
         this.deleteSubscriber = this.deleteSubscriber.bind(this);
     }
 
-    deleteStudent() {
+    deleteSubscriber() {
         axios.delete('http://localhost:3000/subscriber/delete-subscriber/' + this.props.obj._id)
             .then((res) => {
                 console.log('Subscriber successfully deleted!')

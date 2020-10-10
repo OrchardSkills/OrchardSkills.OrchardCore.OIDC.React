@@ -10,7 +10,7 @@ export default class EditSubscriber extends Component {
 
     this.onChangeSubscriberFirstName = this.onChangeSubscriberFirstName.bind(this);
     this.onChangeSubscriberLastName = this.onChangeSubscriberLastName.bind(this);
-    this.onChangeSubscriberEmail = this.onChangeStudentEmail.bind(this);
+    this.onChangeSubscriberEmail = this.onChangeSubscriberEmail.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
 
     // State
