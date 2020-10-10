@@ -22,8 +22,8 @@ export default class SubscriberTableRow extends Component {
     render() {
         return (
             <tr>
-                <td>{this.props.obj.firstname}</td>
-                <td>{this.props.obj.lastname}</td>
+                <td>{this.props.obj.firstName}</td>
+                <td>{this.props.obj.lastName}</td>
                 <td>{this.props.obj.email}</td>
                 <td>
                     <Link className="edit-link" to={"/edit-subscriber/" + this.props.obj._id}>
