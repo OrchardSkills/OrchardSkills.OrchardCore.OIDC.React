@@ -24,7 +24,9 @@ export default class AppContent extends React.Component<any, any> {
   public componentDidMount() {
     this.getUser();
   }
-
+  public isLogedIn = () => {
+    this.authService.isLoggedIn()
+  }
   public login = () => {
     this.authService.login();
   };
@@ -64,7 +66,7 @@ export default class AppContent extends React.Component<any, any> {
   public getUser = () => {
     this.authService.getUser().then(user => {
       if (user) {
-        toast.success('User has been successfully loaded from store.');
+        return
       } else {
         toast.info('You are not logged in.');
       }
@@ -83,9 +85,6 @@ export default class AppContent extends React.Component<any, any> {
         <Buttons
           login={this.login}
           logout={this.logout}
-          renewToken={this.renewToken}
-          getUser={this.getUser}
-          callApi={this.callApi}
         />
       </>
     );

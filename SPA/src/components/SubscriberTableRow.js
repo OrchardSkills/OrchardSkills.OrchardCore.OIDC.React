@@ -11,10 +11,15 @@ export default class SubscriberTableRow extends Component {
         this.authService = new AuthService()
         this.apiService = new ApiService()        
         this.deleteSubscriber = this.deleteSubscriber.bind(this);
+        this.state = {
+            subscribers: []
+          };
     }
 
     deleteSubscriber() {
-        this.apiService.deleteSubscriber(this.props.obj.contentItemId);
+        this.apiService.deleteSubscriber(this.props.obj.contentItemId).then(() => {
+            window.location.reload()
+        });
     }
 
     render() {

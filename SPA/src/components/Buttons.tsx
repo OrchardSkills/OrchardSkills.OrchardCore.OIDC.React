@@ -2,9 +2,6 @@ import * as React from 'react';
 
 interface IButtonsProps {
   login: () => void;
-  getUser: () => void;
-  callApi: () => void;
-  renewToken: () => void;
   logout: () => void;
 }
 

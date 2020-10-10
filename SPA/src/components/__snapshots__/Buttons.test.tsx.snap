@@ -24,39 +24,6 @@ exports[`Buttons renders and matches our snapshot 1`] = `
       Login
     </button>
     <button
-      className="btn btn-secondary btn-getuser"
-      onClick={[MockFunction]}
-      style={
-        Object {
-          "margin": "10px",
-        }
-      }
-    >
-      Get User info
-    </button>
-    <button
-      className="btn btn-warning btn-getapi"
-      onClick={[MockFunction]}
-      style={
-        Object {
-          "margin": "10px",
-        }
-      }
-    >
-      Call API
-    </button>
-    <button
-      className="btn btn-success btn-renewtoken"
-      onClick={[MockFunction]}
-      style={
-        Object {
-          "margin": "10px",
-        }
-      }
-    >
-      Renew Token
-    </button>
-    <button
       className="btn btn-dark btn-logout"
       onClick={[MockFunction]}
       style={

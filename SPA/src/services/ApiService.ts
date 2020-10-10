@@ -36,7 +36,9 @@ export class ApiService {
       Authorization: 'Bearer ' + token
     };
 
-    return axios.get(Constants.apiRoot + '?query={subscriber {createdUtc, displayText email firstName lastName modifiedUtc publishedUtc contentItemId }}', { headers });
+    return axios.get(Constants.apiRoot + '?query={subscriber {createdUtc, displayText email firstName lastName modifiedUtc publishedUtc contentItemId }}', { headers }).then(res => {
+      return res.data.data.subscriber
+    });
   }
 
   public getSubscriber(id: string): Promise<any> {

@@ -7,17 +7,12 @@ import Buttons from './Buttons';
 describe(Buttons, () => {
   const mockLogin = jest.fn();
   const mockLogout = jest.fn();
-  const mockRenewToken = jest.fn();
-  const mockCallApi = jest.fn();
-  const mockGetUser = jest.fn();
 
   const component = shallow(
     <Buttons
       login={mockLogin}
       logout={mockLogout}
-      renewToken={mockRenewToken}
-      callApi={mockCallApi}
-      getUser={mockGetUser}
+
     />
   );
 
@@ -26,9 +21,6 @@ describe(Buttons, () => {
       <Buttons
         login={mockLogin}
         logout={mockLogout}
-        renewToken={mockRenewToken}
-        callApi={mockCallApi}
-        getUser={mockGetUser}
       />
     );
     const tree = buttonComponent.toJSON();
@@ -36,7 +28,7 @@ describe(Buttons, () => {
   });
 
   it('contains the image and h1', () => {
-    expect(component.find('button')).toHaveLength(5);
+    expect(component.find('button')).toHaveLength(2);
   });
 
   it('try to click on login button', () => {

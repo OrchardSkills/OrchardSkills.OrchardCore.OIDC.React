@@ -26,6 +26,13 @@ export class AuthService {
     return this.userManager.getUser();
   }
 
+  async isLoggedIn() {
+   const user = await this.userManager.getUser();
+    const userCurrent = !!user && !user.expired;
+    return userCurrent;
+
+  }
+
   public login(): Promise<void> {
     return this.userManager.signinRedirect();
   }
