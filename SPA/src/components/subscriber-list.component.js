@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import axios from 'axios';
 import Table from 'react-bootstrap/Table';
 import SubscriberTableRow from './SubscriberTableRow';
 import { AuthService } from '../services/AuthService';

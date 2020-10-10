@@ -1,5 +1,5 @@
 {
-  "name": "react-oidc-client-js",
+  "name": "react-oidc",
   "description": "OpenID Connect (OIDC) javascript client with React",
   "version": "3.0.0",
   "dependencies": {

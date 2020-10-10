@@ -6,7 +6,7 @@ import logo from '../logo.svg';
 import Header from './Header';
 
 describe(Header, () => {
-  const pageTitle = 'React app with oidc-client-js';
+  const pageTitle = 'OpenID Connect (OIDC) javascript client with React';
 
   const component = shallow(<Header pageTitle={pageTitle} logoSrc={logo} />);
 

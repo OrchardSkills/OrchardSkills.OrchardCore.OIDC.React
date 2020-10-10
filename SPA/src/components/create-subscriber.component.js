@@ -1,12 +1,16 @@
 import React, { Component } from "react";
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button';
-import axios from 'axios';
+import { AuthService } from '../services/AuthService';
+import { ApiService } from '../services/ApiService';
 
 export default class CreateSubscriber extends Component {
 
   constructor(props) {
     super(props)
+
+    this.authService = new AuthService()
+    this.apiService = new ApiService()
 
     // Setting up functions
     this.onChangeSubscriberFirstName = this.onChangeSubscriberFirstName.bind(this);
@@ -16,18 +20,18 @@ export default class CreateSubscriber extends Component {
 
     // Setting up state
     this.state = {
-      firstname: '',
-      lastname: '',
+      firstName: '',
+      lastName: '',
       email: ''
     }
   }
 
   onChangeSubscriberFirstName(e) {
-    this.setState({ firstname: e.target.value })
+    this.setState({ firstName: e.target.value })
   }
 
   onChangeSubscriberLastName(e) {
-    this.setState({ lastname: e.target.value })
+    this.setState({ lastName: e.target.value })
   }
 
   onChangeSubscriberEmail(e) {
@@ -38,20 +42,22 @@ export default class CreateSubscriber extends Component {
   onSubmit(e) {
     e.preventDefault()
 
-    const studentObject = {
-      firstname: this.state.firstname,
-      lastname: this.state.lastname,
+    const subscriberObject = {
+      firstName: this.state.firstName,
+      lastName: this.state.lastName,
       email: this.state.email
     };
 
-    axios.post('http://localhost:3000/subscriber/create-subscriber', studentObject)
-      .then(res => console.log(res.data));
+    this.apiService.createSubscriber(subscriberObject.firstName, subscriberObject.lastName, subscriberObject.email);    
 
     this.setState({
       firstname: '',
       lastname: '',
       email: ''
     });
+
+    // Redirect to Subscriber List 
+    this.props.history.push('/subscriber-list')  
   }
 
   render() {
@@ -59,12 +65,12 @@ export default class CreateSubscriber extends Component {
       <Form onSubmit={this.onSubmit}>
         <Form.Group controlId="FirstName">
           <Form.Label>First Name</Form.Label>
-          <Form.Control type="text" value={this.state.firstname} onChange={this.onChangeSubscriberFirstName} />
+          <Form.Control type="text" value={this.state.firstName} onChange={this.onChangeSubscriberFirstName} />
         </Form.Group>
 
         <Form.Group controlId="LastName">
           <Form.Label>Last Name</Form.Label>
-          <Form.Control type="text" value={this.state.lastname} onChange={this.onChangeSubscriberLastName} />
+          <Form.Control type="text" value={this.state.lastName} onChange={this.onChangeSubscriberLastName} />
         </Form.Group>
 
         <Form.Group controlId="Email">

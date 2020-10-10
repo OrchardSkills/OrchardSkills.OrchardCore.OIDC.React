@@ -1,22 +1,20 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
 import Button from 'react-bootstrap/Button';
+import { AuthService } from '../services/AuthService';
+import { ApiService } from '../services/ApiService';
 
 export default class SubscriberTableRow extends Component {
 
     constructor(props) {
         super(props);
+        this.authService = new AuthService()
+        this.apiService = new ApiService()        
         this.deleteSubscriber = this.deleteSubscriber.bind(this);
     }
 
     deleteSubscriber() {
-        axios.delete('http://localhost:3000/subscriber/delete-subscriber/' + this.props.obj._id)
-            .then((res) => {
-                console.log('Subscriber successfully deleted!')
-            }).catch((error) => {
-                console.log(error)
-            })
+        this.apiService.deleteSubscriber(this.props.obj.contentItemId);
     }
 
     render() {

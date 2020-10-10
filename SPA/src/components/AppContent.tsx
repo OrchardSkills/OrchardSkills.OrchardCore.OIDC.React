@@ -87,9 +87,10 @@ export default class AppContent extends React.Component<any, any> {
           getUser={this.getUser}
           callApi={this.callApi}
         />
-
-        <AuthContent api={this.state.api} user={this.state.user} />
       </>
     );
   }
 }
+
+// Used for testing
+// <AuthContent api={this.state.api} user={this.state.user} />

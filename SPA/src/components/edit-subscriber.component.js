@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button';
-import axios from 'axios';
 import { AuthService } from '../services/AuthService';
 import { ApiService } from '../services/ApiService';
 
@@ -69,18 +68,9 @@ export default class EditSubscriber extends Component {
 
     this.apiService.updateSubscriber(this.props.match.params.id, subscriberObject.firstName, subscriberObject.lastName, subscriberObject.email);
 
-    // axios.put('http://localhost:3000/subscriber/update-subscriber/' + this.props.match.params.id, subscriberObject)
-    //   .then((res) => {
-    //     console.log(res.data)
-    //     console.log('Subscriber successfully updated')
-    //   }).catch((error) => {
-    //     console.log(error)
-    //   })
-
-    // Redirect to Student List 
+    // Redirect to Subscriber List 
     this.props.history.push('/subscriber-list')
   }
-
 
   render() {
     return (<div className="form-wrapper">
