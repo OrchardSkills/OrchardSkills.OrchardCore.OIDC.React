@@ -28,7 +28,6 @@ npm install oidc-client --save
 
 ```
 npm install react-router-dom --save
-npm install @types/react-router --save-dev
 npm install @types/react-router-dom --save-dev
 ```
 
