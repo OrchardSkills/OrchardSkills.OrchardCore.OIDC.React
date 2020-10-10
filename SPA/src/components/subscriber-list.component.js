@@ -34,9 +34,6 @@ export default class SubscriberList extends Component {
       this.token = user.access_token
       console.log('token', this.token)
     })
-
-
-      
   }
 
   DataTable() {

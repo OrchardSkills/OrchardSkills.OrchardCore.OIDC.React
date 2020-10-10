@@ -38,4 +38,35 @@ export class ApiService {
 
     return axios.get(Constants.apiRoot + '?query={subscriber {createdUtc, displayText email firstName lastName modifiedUtc publishedUtc contentItemId }}', { headers });
   }
+
+  public getSubscriber(id: string): Promise<any> {
+    return this.authService.getUser().then(user => {
+      if (user && user.access_token) {
+        return this._getSubscriber(id, user.access_token).catch(error => {
+          if (error.response.status === 401) {
+            return this.authService.renewToken().then(renewedUser => {
+              return this._getSubscriber(id, renewedUser.access_token);
+            });
+          }
+          throw error;
+        });
+      } else if (user) {
+        return this.authService.renewToken().then(renewedUser => {
+          return this._getSubscriber(id, renewedUser.access_token);
+        });
+      } else {
+        throw new Error('user is not logged in');
+      }
+    });
+  }
+
+  private _getSubscriber(id: string, token: string) {
+    const headers = {
+      Accept: 'application/json',
+      Authorization: 'Bearer ' + token
+    };
+
+    return axios.get(Constants.apiContent + '/' + id, { headers });
+  }
+
 }

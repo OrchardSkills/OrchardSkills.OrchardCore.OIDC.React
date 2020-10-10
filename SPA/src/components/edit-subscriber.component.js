@@ -2,11 +2,16 @@ import React, { Component } from "react";
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button';
 import axios from 'axios';
+import { AuthService } from '../services/AuthService';
+import { ApiService } from '../services/ApiService';
 
 export default class EditSubscriber extends Component {
 
   constructor(props) {
     super(props)
+
+    this.authService = new AuthService()
+    this.apiService = new ApiService()
 
     this.onChangeSubscriberFirstName = this.onChangeSubscriberFirstName.bind(this);
     this.onChangeSubscriberLastName = this.onChangeSubscriberLastName.bind(this);
@@ -22,17 +27,22 @@ export default class EditSubscriber extends Component {
   }
 
   componentDidMount() {
-    axios.get('http://localhost:3000/subscriber/edit-subscriber/' + this.props.match.params.id)
-      .then(res => {
-        this.setState({
-          firstName: res.data.firstName,
-          lastName: res.data.lastName,
-          email: res.data.email
-        });
-      })
-      .catch((error) => {
-        console.log(error);
-      })
+    this.apiService.getSubscriber(this.props.match.params.id).then(res => {
+      console.log('data', res)
+         this.setState({
+           firstName: res.data.Subscriber.FirstName.Text,
+           lastName: res.data.Subscriber.LastName.Text,
+           email: res.data.Subscriber.Email.Text
+         });
+    })
+    .catch((error) => {
+      console.log(error);
+    })
+    this.authService.getUser().then(user => {
+      this.token = user.access_token
+      console.log('token', this.token)
+    })    
+
   }
 
   onChangeSubscriberFirstName(e) {

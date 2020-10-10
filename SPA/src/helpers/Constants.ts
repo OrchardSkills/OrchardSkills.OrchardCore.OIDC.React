@@ -4,4 +4,5 @@ export class Constants {
   public static clientRoot = 'https://localhost:3000/';
   public static clientScope = 'openid profile api';
   public static apiRoot = 'https://localhost:44342/api/graphql';
+  public static apiContent = 'https://localhost:44342/api/content';
 }
