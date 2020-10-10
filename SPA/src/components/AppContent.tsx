@@ -11,21 +11,27 @@ export default class AppContent extends React.Component<any, any> {
   public authService: AuthService;
   public apiService: ApiService;
   private shouldCancel: boolean;
-
+  private authUser: boolean = false;
   constructor(props: any) {
     super(props);
 
     this.authService = new AuthService();
     this.apiService = new ApiService();
-    this.state = { user: {}, api: {} };
     this.shouldCancel = false;
+
   }
 
   public componentDidMount() {
     this.getUser();
+    this.isLogedIn()
   }
-  public isLogedIn = () => {
-    this.authService.isLoggedIn()
+  public isLogedIn = async () => {
+   const auth = await this.authService.isLoggedIn();
+   this.authUser = auth
+    this.setState({
+      authUser: auth
+    });
+    console.log('auth', auth);
   }
   public login = () => {
     this.authService.login();
@@ -82,10 +88,21 @@ export default class AppContent extends React.Component<any, any> {
       <>
         <ToastContainer />
 
-        <Buttons
-          login={this.login}
-          logout={this.logout}
-        />
+        <div className="row">
+      <div className="col-md-12 text-center" style={{ marginTop: '30px' }}>
+        {this.authUser ? (
+          <button className="btn btn-dark btn-logout" style={{ margin: '10px' }} onClick={this.logout} >
+          Logout
+        </button>
+        ) : (
+          <button className="btn btn-primary btn-login" style={{ margin: '10px' }} onClick={this.login} >
+          Login
+          </button>
+        )}
+
+        
+      </div>
+    </div>
       </>
     );
   }

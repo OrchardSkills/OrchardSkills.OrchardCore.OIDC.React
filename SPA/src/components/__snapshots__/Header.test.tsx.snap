@@ -12,7 +12,16 @@ exports[`Header renders and matches our snapshot 1`] = `
   <h1
     className="App-title"
   >
-    React app with oidc-client-js
+    OpenID Connect (OIDC) javascript client with React
   </h1>
+  <nav
+    className="navbar navbar-expand navbar-dark bg-dark"
+  >
+    <div
+      className="text-center"
+    >
+      Please login to enable CRUD operations.
+    </div>
+  </nav>
 </header>
 `;

@@ -6,6 +6,7 @@ import Container from "react-bootstrap/Container";
 export interface IHeaderProps {
   pageTitle: string;
   logoSrc: any;
+  authUser: boolean
 }
 
 export default function Header(props: IHeaderProps) {
@@ -14,25 +15,32 @@ export default function Header(props: IHeaderProps) {
       <img src={props.logoSrc} className="App-logo" alt="logo" />
       <h1 className="App-title">{props.pageTitle}</h1>
       <Navbar bg="dark" variant="dark">
-        <Container>
-          <Navbar.Brand>
-            <Link to={"/create-subscriber"} className="nav-link">
-              Subscribers
-            </Link>
-          </Navbar.Brand>
-          <Nav className="justify-content-end">
-            <Nav>
+        {props.authUser ? (
+          <Container>
+            <Navbar.Brand>
               <Link to={"/create-subscriber"} className="nav-link">
-                Create
-              </Link>
+                Subscribers
+            </Link>
+            </Navbar.Brand>
+            <Nav className="justify-content-end">
               <Nav>
-                <Link to={"/subscriber-list"} className="nav-link">
-                  List
+                <Link to={"/create-subscriber"} className="nav-link">
+                  Create
+              </Link>
+                <Nav>
+                  <Link to={"/subscriber-list"} className="nav-link">
+                    List
                 </Link>
+                </Nav>
               </Nav>
             </Nav>
-          </Nav>
-        </Container>
+          </Container>
+        ) : (
+            <div className="text-center">
+              Please login to enable CRUD operations.
+            </div>
+          )}
+
       </Navbar>
     </header>
   );
