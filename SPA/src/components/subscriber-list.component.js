@@ -22,29 +22,21 @@ export default class SubscriberList extends Component {
 
   componentDidMount() {
     this.apiService.callApi().then(res => {
-      console.log('data', res.data.data.subscriber)
-
+      console.log('data', res)
+      this.setState({
+        subscribers: res.data.data.subscriber
+      });
+    })
+    .catch((error) => {
+      console.log(error);
     })
     this.authService.getUser().then(user => {
       this.token = user.access_token
       console.log('token', this.token)
-      const headers = {
-        Accept: 'application/json',
-        Authorization: 'Bearer ' + this.token
-      };
-
     })
 
-    axios.get(Constants.apiRoot + '?query={subscriber {createdUtc, displayText email firstName lastName modifiedUtc publishedUtc contentItemId }}')
-      .then(res => {
-        console.log('data', res)
-        this.setState({
-          subscribers: res.data.data
-        });
-      })
-      .catch((error) => {
-        console.log(error);
-      })
+
+      
   }
 
   DataTable() {

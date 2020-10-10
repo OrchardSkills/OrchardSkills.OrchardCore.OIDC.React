@@ -15,8 +15,8 @@ export default class EditSubscriber extends Component {
 
     // State
     this.state = {
-      firstname: '',
-      lastname: '',
+      firstName: '',
+      lastName: '',
       email: ''
     }
   }
@@ -25,8 +25,8 @@ export default class EditSubscriber extends Component {
     axios.get('http://localhost:3000/subscriber/edit-subscriber/' + this.props.match.params.id)
       .then(res => {
         this.setState({
-          firstname: res.data.firstname,
-          lastname: res.data.lastname,
+          firstName: res.data.firstName,
+          lastName: res.data.lastName,
           email: res.data.email
         });
       })
@@ -36,11 +36,11 @@ export default class EditSubscriber extends Component {
   }
 
   onChangeSubscriberFirstName(e) {
-    this.setState({ firstname: e.target.value })
+    this.setState({ firstName: e.target.value })
   }
 
   onChangeSubscriberLastName(e) {
-    this.setState({ lastname: e.target.value })
+    this.setState({ lastName: e.target.value })
   }
 
   onChangeSubscriberEmail(e) {
@@ -50,13 +50,14 @@ export default class EditSubscriber extends Component {
   onSubmit(e) {
     e.preventDefault()
 
-    const studentObject = {
-      name: this.state.name,
-      email: this.state.email,
-      rollno: this.state.rollno
+    const subscriberObject = {
+      firstName: this.state.firstName,
+      lastName: this.state.lastName,
+      email: this.state.email
+      
     };
 
-    axios.put('http://localhost:3000/subscriber/update-subscriber/' + this.props.match.params.id, studentObject)
+    axios.put('http://localhost:3000/subscriber/update-subscriber/' + this.props.match.params.id, subscriberObject)
       .then((res) => {
         console.log(res.data)
         console.log('Subscriber successfully updated')
@@ -74,12 +75,12 @@ export default class EditSubscriber extends Component {
       <Form onSubmit={this.onSubmit}>
         <Form.Group controlId="FirstName">
           <Form.Label>First Name</Form.Label>
-          <Form.Control type="text" value={this.state.firstname} onChange={this.onChangeSubscriberFirstName} />
+          <Form.Control type="text" value={this.state.firstName} onChange={this.onChangeSubscriberFirstName} />
         </Form.Group>
 
         <Form.Group controlId="LastName">
           <Form.Label>Last Name</Form.Label>
-          <Form.Control type="text" value={this.state.lastname} onChange={this.onChangeSubscriberLastName} />
+          <Form.Control type="text" value={this.state.lastName} onChange={this.onChangeSubscriberLastName} />
         </Form.Group>
 
         <Form.Group controlId="Email">
