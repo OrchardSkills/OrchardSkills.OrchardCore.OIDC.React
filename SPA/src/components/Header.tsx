@@ -3,11 +3,6 @@ import { BrowserRouter as Router, Link } from "react-router-dom";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import Container from "react-bootstrap/Container";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
-import CreateSubscriber from "../components/create-subscriber.component";
-import EditSubscriber from "../components//edit-subscriber.component";
-import SubscriberList from "../components//subscriber-list.component";
 export interface IHeaderProps {
   pageTitle: string;
   logoSrc: any;

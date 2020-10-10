@@ -10,7 +10,7 @@ export default class CreateSubscriber extends Component {
 
     // Setting up functions
     this.onChangeSubscriberFirstName = this.onChangeSubscriberFirstName.bind(this);
-    this.onChangeSubscriberLastName = this.onChangeSSubscriberLastName.bind(this);
+    this.onChangeSubscriberLastName = this.onChangeSubscriberLastName.bind(this);
     this.onChangeSubscriberEmail = this.onChangeSubscriberEmail.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
 

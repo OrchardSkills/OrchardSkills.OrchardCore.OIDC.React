@@ -1,5 +1,11 @@
 import * as React from "react";
-import { BrowserRouter as Router, Link } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import CreateSubscriber from "../components/create-subscriber.component";
+import EditSubscriber from "../components//edit-subscriber.component";
+import SubscriberList from "../components//subscriber-list.component";
 import AppContent from "../components/AppContent";
 import Header from "../components/Header";
 import logo from "../logo.svg";
@@ -22,6 +28,20 @@ class App extends React.Component {
             </div>
           </div>
         </div>
+        <Container>
+        <Row>
+          <Col md={12}>
+            <div className="wrapper">
+              <Switch>
+                <Route exact path='/' component={CreateSubscriber} />
+                <Route path="/create-subscriber" component={CreateSubscriber} />
+                <Route path="/edit-subscriber/:id" component={EditSubscriber} />
+                <Route path="/subscriber-list" component={SubscriberList} />
+              </Switch>
+            </div>
+          </Col>
+        </Row>
+        </Container>        
       </Router>
     );
   }

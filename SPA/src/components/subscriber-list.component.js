@@ -4,12 +4,12 @@ import Table from 'react-bootstrap/Table';
 import SubscriberTableRow from './SubscriberTableRow';
 
 
-export default class StudentList extends Component {
+export default class SubscriberList extends Component {
 
   constructor(props) {
     super(props)
     this.state = {
-      students: []
+      subscribers: []
     };
   }
 
@@ -17,7 +17,7 @@ export default class StudentList extends Component {
     axios.get('http://localhost:3000/subscriber/')
       .then(res => {
         this.setState({
-          students: res.data
+          subscribers: res.data
         });
       })
       .catch((error) => {
@@ -26,7 +26,7 @@ export default class StudentList extends Component {
   }
 
   DataTable() {
-    return this.state.subscriber.map((res, i) => {
+    return this.state.subscribers.map((res, i) => {
       return <SubscriberTableRow obj={res} key={i} />;
     });
   }
