@@ -30,7 +30,7 @@ export default class SubscriberTableRow extends Component {
                 <td>{this.props.obj.email}</td>
                 <td>
                     <Link className="edit-link" to={"/edit-subscriber/" + this.props.obj.contentItemId}>
-                        Edit&nbsp;&nbsp;
+                    &nbsp;&nbsp;Edit&nbsp;&nbsp;
                     </Link>
                     <Button onClick={this.deleteSubscriber} size="sm" variant="danger">Delete</Button>
                 </td>
