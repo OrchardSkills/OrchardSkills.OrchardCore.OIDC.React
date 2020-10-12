@@ -27,7 +27,7 @@ Modify package.json
 To add TypeScript to a Create React App project, first install these Typescript Typings packages:
 
 ```
-npm install --save typescript @types/node @types/react @types/react-dom @types/jest
+npm install typescript @types/node @types/react @types/react-dom @types/jest  --save-dev 
 ```
 
 ## Install oidc-client
@@ -43,6 +43,34 @@ npm install oidc-client --save
 ```
 npm install react-router-dom --save
 npm install @types/react-router-dom --save-dev
+```
+
+## Install react-toastify
+
+```
+npm install react-toastify --save
+npm install @types/toastr --save-dev  
+```
+
+## install axios
+
+```
+npm install axios --save
+npm install @types/axios --save-dev  
+```
+
+## install enzyme
+
+```
+npm install enzyme enzyme-adapter-react-16 --save-dev 
+npm install @types/enzyme @types/enzyme-adapter-react-16 --save-dev
+```
+
+## install ramda
+
+```
+npm install ramda --save
+npm install @types/ramda --save-dev
 ```
 
 ## install bootstrap
