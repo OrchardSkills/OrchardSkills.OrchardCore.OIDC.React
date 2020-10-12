@@ -3,7 +3,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 ## Create App
 
 ```
-npx create-react-app react-oidc
+npx create-react-app react-oidc --template typescript
 ```
 
 ## SSL
@@ -14,6 +14,20 @@ Modify package.json
 
 ```
 "start": "set HTTPS=true&&set SSL_CRT_FILE=./ssl/server.crt&&set SSL_KEY_FILE=./ssl/server.key&&react-scripts start",
+```
+
+## Install Typescript Typings for React
+
+### Getting Started with TypeScript and React
+
+- [TypeScript Handbook](https://www.typescriptlang.org/)
+- [TypeScript Example on React](https://www.typescriptlang.org/play/index.html?jsx=2&esModuleInterop=true&e=196#example/typescript-with-react)
+- [React + TypeScript Cheatsheets](https://github.com/typescript-cheatsheets/react-typescript-cheatsheet#reacttypescript-cheatsheets) has a good overview on how to use React with TypeScript
+
+To add TypeScript to a Create React App project, first install these Typescript Typings packages:
+
+```
+npm install --save typescript @types/node @types/react @types/react-dom @types/jest
 ```
 
 ## Install oidc-client
